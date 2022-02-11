@@ -1,0 +1,64 @@
+openapi: 3.0.1
+
+info:
+  title: 'api'
+  description: 'api'
+  version: '1.0.0'
+
+paths:
+  /:
+    get:
+      operationId: getSurveyList
+      description: 'Get survey list'
+      tags:
+        - Survey
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'components.yml#/components/schemas/Survey'
+
+    post:
+      operationId: createSurvey
+      description: 'Create new survey'
+      tags:
+        - Survey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSurveyRequest'
+      responses:
+        200:
+          description: OK
+        400:
+          description: Error
+
+components:
+  schemas:
+    CreateSurveyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'it is create'
+        description:
+          type: string
+          example: 'description for new Survey'
+        startAt:
+          type: string
+          format: 'date-time'
+          example: '2099-02-11T00:00:00'
+        endAt:
+          type: string
+          format: 'date-time'
+          example: '2099-02-11T00:00:00'
+        questions:
+          type: array
+          items:
+            $ref: '../question/components.yml#/components/schemas/Question'

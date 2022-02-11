@@ -1,0 +1,16 @@
+components:
+  schemas:
+    Question:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        text:
+          type: string
+          example: 'it is text'
+        type:
+          type: string
+          example: SINGLE_ANSWER
+          enum:
+            - SINGLE_ANSWER

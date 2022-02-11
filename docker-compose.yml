@@ -14,5 +14,14 @@ services:
         ports:
             - "3307:3306"
 
+    swagger:
+        container_name: fabriquedemo-swagger-ui
+        image: swaggerapi/swagger-ui:v3.23.3
+        environment:
+            - API_URL=api-doc/swagger/fabrique/swagger.yml
+        ports:
+            - "9002:8080"
+        volumes:
+            - ./api-doc:/usr/share/nginx/html/api-doc
 volumes:
     mysql:

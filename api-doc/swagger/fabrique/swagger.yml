@@ -1,0 +1,32 @@
+openapi: 3.0.1
+
+info:
+    title: 'Fabrique api'
+    description: 'Fabrique api'
+    version: '1.0.0'
+
+servers:
+    -
+        url: 'http://localhost:9001'
+        description: 'Development server'
+
+tags:
+    -
+        name: 'Fabrique Demo Application'
+        description: 'Application API'
+
+paths:
+    /auth:
+        $ref: 'definitions/user/auth.yml#/paths/~1'
+
+    /v1/survey:
+        $ref: 'definitions/survey/survey.yml#/paths/~1'
+
+    /v1/survey/{id}/:
+        $ref: 'definitions/survey/survey_by_id.yml#/paths/~1'
+
+    /v1/question:
+        $ref: 'definitions/question/question.yml#/paths/~1'
+
+    /v1/question/{id}/:
+        $ref: 'definitions/question/question_by_id.yml#/paths/~1'

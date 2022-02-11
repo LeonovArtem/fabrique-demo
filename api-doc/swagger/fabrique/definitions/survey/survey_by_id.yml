@@ -1,0 +1,95 @@
+openapi: 3.0.1
+
+info:
+  title: 'api'
+  description: 'api'
+  version: '1.0.0'
+
+paths:
+  /:
+    get:
+      operationId: getSurveyById
+      description: 'Get survey by id'
+      tags:
+        - Survey
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yml#/components/schemas/Survey'
+        400:
+          description: Error
+    put:
+      operationId: updateSurvey
+      description: 'Update survey'
+      tags:
+        - Survey
+      parameters:
+        -
+          in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSurveyRequest'
+      responses:
+        200:
+          description: OK
+
+    delete:
+      operationId: deleteSurvey
+      description: 'Delete survey'
+      tags:
+        - Survey
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+      responses:
+        200:
+          description: OK
+
+components:
+  schemas:
+    UpdateSurveyRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'new name'
+        description:
+          type: string
+          example: 'new description'
+        startAt:
+          type: string
+          format: 'date-time'
+          example: '2099-02-11T00:00:00'
+        endAt:
+          type: string
+          format: 'date-time'
+          example: '2099-02-11T00:00:00'
+        questions:
+          type: array
+          items:
+            $ref: '../question/components.yml#/components/schemas/Question'

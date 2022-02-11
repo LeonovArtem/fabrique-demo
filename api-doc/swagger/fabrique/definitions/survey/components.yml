@@ -1,0 +1,26 @@
+components:
+  schemas:
+    Survey:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'name example'
+        description:
+          type: string
+          example: 'description example'
+        startAt:
+          type: string
+          format: 'date-time'
+          example: '2022-02-11T01:44:28'
+        endAt:
+          type: string
+          format: 'date-time'
+          example: '2022-02-12T04:00:00'
+        questions:
+          type: array
+          items:
+            $ref: '../question/components.yml#/components/schemas/Question'

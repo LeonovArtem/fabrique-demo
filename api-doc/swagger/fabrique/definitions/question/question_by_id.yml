@@ -1,0 +1,95 @@
+openapi: 3.0.1
+
+info:
+  title: 'api'
+  description: 'api'
+  version: '1.0.0'
+
+paths:
+  /:
+    get:
+      operationId: getQuestionById
+      description: 'Get question by id'
+      tags:
+        - Question
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yml#/components/schemas/Question'
+
+    put:
+      operationId: updateQuestion
+      description: 'Update question'
+      tags:
+        - Question
+      parameters:
+        -
+          in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateQuestionRequest'
+      responses:
+        200:
+          description: OK
+
+    delete:
+      operationId: deleteQuestion
+      description: 'Delete question'
+      tags:
+        - Question
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+      responses:
+        200:
+          description: OK
+
+components:
+  schemas:
+    UpdateQuestionRequest:
+      type: object
+      properties:
+        text:
+          type: string
+          example: 'Changed text...'
+        type:
+          type: string
+          example: SINGLE_ANSWER
+          enum:
+            - SINGLE_ANSWER
+    Question:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        text:
+          type: string
+          example: 'it is text'
+        type:
+          type: string
+          example: SINGLE_ANSWER
+          enum:
+            - SINGLE_ANSWER
