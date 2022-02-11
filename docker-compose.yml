@@ -13,3 +13,6 @@ services:
             - TZ=Europe/Moscow
         ports:
             - "3307:3306"
+
+volumes:
+    mysql:
