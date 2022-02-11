@@ -1,4 +1,4 @@
-package com.fabrique.fabriquedemo.controller;
+package com.fabrique.fabriquedemo.controller.api.v1;
 
 import com.fabrique.fabriquedemo.entity.Survey;
 import com.fabrique.fabriquedemo.service.SurveyService;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("survey")
+@RequestMapping("/v1/survey")
 public class SurveyController {
 
     @Autowired
@@ -21,8 +21,8 @@ public class SurveyController {
     }
 
     @GetMapping("{id}")
-    public Survey getOne(@PathVariable("id") Survey survey) {
-        return survey;
+    public Survey getOne(@PathVariable("id") long id) {
+        return surveyService.findById(id);
     }
 
     @PostMapping

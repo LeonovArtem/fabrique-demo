@@ -1,6 +1,7 @@
 package com.fabrique.fabriquedemo.service;
 
 import com.fabrique.fabriquedemo.entity.Survey;
+import com.fabrique.fabriquedemo.exception.NotFoundException;
 import com.fabrique.fabriquedemo.repository.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,10 @@ public class SurveyServiceImpl implements SurveyService {
 
     public void delete(Survey survey) {
         surveyRepository.delete(survey);
+    }
+
+    @Override
+    public Survey findById(long id) throws NotFoundException {
+        return surveyRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 }

@@ -61,4 +61,16 @@ components:
         questions:
           type: array
           items:
-            $ref: '../question/components.yml#/components/schemas/Question'
+            $ref: '#/components/schemas/Question'
+
+    Question:
+      type: object
+      properties:
+        text:
+          type: string
+          example: 'created new Question'
+        type:
+          type: string
+          example: TEXT_ANSWER
+          enum:
+            - TEXT_ANSWER

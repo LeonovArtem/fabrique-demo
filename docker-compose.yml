@@ -1,16 +1,13 @@
 version: '3'
 
 services:
-    mysql:
-        image: percona/percona-server:8.0.17
+    fabriquedemo-db:
         container_name: fabriquedemo-db
-        restart: always
+        image: mysql:5.7
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=app-demo
-            - MYSQL_USER=app-demo
-            - MYSQL_PASSWORD=app-demo
-            - TZ=Europe/Moscow
+            - MYSQL_PASSWORD=root
         ports:
             - "3307:3306"
 
@@ -24,4 +21,4 @@ services:
         volumes:
             - ./api-doc:/usr/share/nginx/html/api-doc
 volumes:
-    mysql:
+    fabriquedemo-db:
