@@ -30,4 +30,9 @@ public class SurveyServiceImpl implements SurveyService {
     public Survey findById(long id) throws NotFoundException {
         return surveyRepository.findById(id).orElseThrow(NotFoundException::new);
     }
+
+    @Override
+    public List<Survey> getAllWithQuestion() {
+        return surveyRepository.findAll();
+    }
 }

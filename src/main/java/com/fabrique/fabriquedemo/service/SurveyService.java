@@ -14,4 +14,6 @@ public interface SurveyService {
     void delete(Survey survey);
 
     Survey findById(long id) throws NotFoundException;
+
+    List<Survey> getAllWithQuestion();
 }

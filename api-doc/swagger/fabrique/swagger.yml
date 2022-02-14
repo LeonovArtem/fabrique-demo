@@ -16,8 +16,6 @@ tags:
         description: 'Application API'
 
 paths:
-    /auth:
-        $ref: 'definitions/user/auth.yml#/paths/~1'
 
     /v1/survey:
         $ref: 'definitions/survey/survey.yml#/paths/~1'
